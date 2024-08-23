@@ -24,7 +24,7 @@ namespace GameLogic.GamePlay
                     var newId = m_Attacker.ID+1;
                     ManagerLocator.Get<PlaceGridManager>().RemoveAttacker(attacker);
                     ManagerLocator.Get<PlaceGridManager>().RemoveAttacker(m_Attacker);
-                    ManagerLocator.Get<PlaceGridManager>().CreateNewAttacker(newId, this);
+                    ManagerLocator.Get<PlaceGridManager>().CreateNewAttacker(newId, this,attacker.animalType);
                     ManagerLocator.Get<FactoryManager>().Get<EffectFactory>().CreateEffect(EffectType.Synthesize, transform.Find("CenterPoint").position).Forget();
                 }
                 else
@@ -84,7 +84,7 @@ namespace GameLogic.GamePlay
             }
             else
             {
-                attacker.transform.localPosition = Vector3.zero;
+                attacker.transform.localPosition = Vector3.back;
             }
             
             ManagerLocator.Get<PlaceGridManager>().PlaceGrid(placement,attacker);

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Cysharp.Threading.Tasks;
 using GameBase;
+using GameLogic.GamePlay.UI;
 using GamePlay.framework;
 using JetBrains.Annotations;
 using TMPro;
@@ -56,6 +57,27 @@ namespace GameLogic.GamePlay
 
         public  TMP_Text CoinText;
         private int      cointCount;
+
+        private int hp = 5;
+        public int Hp
+        {
+            get => hp; 
+            set
+            {
+                hp = value;
+                MainUIWindow.Active().SetHpText(hp);;
+                if (hp <= 0)
+                {
+                    GameOver();
+                }
+            }
+        }
+
+        private void GameOver()
+        {
+            throw new NotImplementedException();
+        }
+
         public int CointCount
         {
             get => cointCount;
@@ -75,7 +97,7 @@ namespace GameLogic.GamePlay
                     }
                     if (cointCount < technologyLevelCost)
                     {
-                        levelButton.transform.GetComponentInChildren<TMP_Text>().color = Color.green;
+                        levelButton.transform.GetComponentInChildren<TMP_Text>().color = Color.red;
                     }
                     else
                     {
@@ -140,7 +162,7 @@ namespace GameLogic.GamePlay
             await UniTask.Delay( TimeSpan.FromSeconds( 1f ));
             //await ManagerLocator.Get<PlacementGridManager>().RandomInit();
             GameStart();
-            await ManagerLocator.Get<PlaceGridManager>().RandomInit();
+            ManagerLocator.Get<PlaceGridManager>().RandomInit();
             await GameFlow();
         }
 

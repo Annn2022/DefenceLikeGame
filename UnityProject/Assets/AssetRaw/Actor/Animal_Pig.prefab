@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5651473555722191061}
   - component: {fileID: 2168787581193326568}
   - component: {fileID: 4905684406682476230}
-  - component: {fileID: 3081876363645355114}
   - component: {fileID: 7769821484728505942}
-  m_Layer: 0
+  - component: {fileID: -3121463276624455318}
+  m_Layer: 31
   m_Name: Animal_Pig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,22 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3081876363645355114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2211916443193781072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c4feea8bf44b6c89f95301bd25b6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  m_PlacementGrid: {fileID: 0}
-  Bulletpath: 
-  m_Text: {fileID: 1592473706837155008}
 --- !u!61 &7769821484728505942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +154,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20760033, y: 0.14946255}
   m_EdgeRadius: 0
+--- !u!114 &-3121463276624455318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211916443193781072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cc579e1bc14eb6841e2271fbeabc9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  animalType: 0
+  m_PlacementGrid: {fileID: 0}
+  Bulletpath: bullet_slow
+  bulletInterval: 2.5
+  Damage: 10
+  m_Text: {fileID: 0}
 --- !u!1 &3230286838339714220
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +184,7 @@ GameObject:
   - component: {fileID: 6030934539963946233}
   - component: {fileID: 5202658878223902169}
   - component: {fileID: 1592473706837155008}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,13 +319,13 @@ GameObject:
   - component: {fileID: 5640580765392398265}
   - component: {fileID: 3519255653639857126}
   - component: {fileID: 8087436774303324660}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8295202422797392497
 RectTransform:
   m_ObjectHideFlags: 0

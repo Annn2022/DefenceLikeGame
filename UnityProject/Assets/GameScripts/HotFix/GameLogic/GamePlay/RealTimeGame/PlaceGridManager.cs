@@ -38,11 +38,11 @@ namespace GameLogic.GamePlay
         /// <summary>
         /// 开局随机生成Attacker
         /// </summary>
-        public async UniTask RandomInit()
+        public void RandomInit()
         {
             attackerCurPool.Add(attackerPool[0]);
             int index = Random.Range(0, ListPlacementGrid_Empty.Count);
-            var attacker=  await  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimalAsync(1);
+            var attacker=  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimalAsType(0,1);
             var attackerComponet = attacker.GetComponent<Animal_Attacker>();
 
             ListPlacementGrid_Empty[index].DoPutDown(attackerComponet);
@@ -70,7 +70,7 @@ namespace GameLogic.GamePlay
             {
                 return;
             }
-            var attacker =  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimal(id);
+            var attacker =  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimalRandom(id);
             var attackerComponet = attacker.GetComponent<Animal_Attacker>();
             int indexGrid = Random.Range(0, ListPlacementGrid_Empty.Count);
             if (ListPlacementGrid_Empty[indexGrid].m_Attacker!=null)
@@ -85,10 +85,10 @@ namespace GameLogic.GamePlay
         /// <summary>
         /// 创建一个新的攻击者
         /// </summary>
-        public void CreateNewAttacker(uint newId, PlaceGrid grid)
+        public void CreateNewAttacker(uint newId, PlaceGrid grid, int animalType)
         {
             ClearGrid(grid);
-            var attacker=  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimal(newId);
+            var attacker=  ManagerLocator.Get<FactoryManager>().Get<AnimalFactory>().CreateAnimalAsType(animalType,newId);
             var attackerComponet = attacker.GetComponent<Animal_Attacker>();
             grid.DoPutDown(attackerComponet);
             AddAttacker(attackerComponet);

@@ -9,6 +9,7 @@ namespace GameLogic.GamePlay.Factory
     public class AnimalFactory:IFactory
     {
         private string[] attackerPool = new string[] { "Animal_Sheep","Animal_Pig","Animal_Cow","Animal_Chicken"};
+        private Color[] colorPool  = new Color[] { Color.green, Color.cyan, Color.magenta, Color.yellow, Color.red,  };
         
         public async UniTask<GameObject> CreateAnimalAsync(uint id)
         {
@@ -67,6 +68,36 @@ namespace GameLogic.GamePlay.Factory
             }
             go.GetComponent<Animal_Attacker>().ID = id;
             
+            return go;
+        }
+        
+        //随机一个种类
+        public GameObject CreateAnimalRandom(uint id)
+        {
+            GameObject go;
+
+            var animalType = Random.Range(0, 3);
+            go = GameModule.Resource.LoadGameObject(attackerPool[animalType]);
+        
+          
+            go.GetComponent<Animal_Attacker>().ID = id;
+            go.GetComponent<Animal_Attacker>().animalType = animalType;
+            id = (uint)Mathf.Clamp(id, 1, 5);
+
+            go.GetComponent<SpriteRenderer>().color = colorPool[id-1];
+            return go;
+        } 
+        
+        public GameObject CreateAnimalAsType(int animalType,uint id)
+        {
+            GameObject go;
+            
+            go = GameModule.Resource.LoadGameObject(attackerPool[animalType]);
+            
+            go.GetComponent<Animal_Attacker>().ID = id;
+            go.GetComponent<Animal_Attacker>().animalType = animalType;
+            id = (uint)Mathf.Clamp(id, 1, 5);
+            go.GetComponent<SpriteRenderer>().color = colorPool[id-1];
             return go;
         }
 

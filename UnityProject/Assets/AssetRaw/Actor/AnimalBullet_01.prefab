@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2940113405995345992}
   - component: {fileID: 1204700473445760756}
   - component: {fileID: 7491889759561534357}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6438151929169639398}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: AnimalBullet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1929738184541568905}
   - component: {fileID: 6804906021587597089}
   - component: {fileID: 2752670397497911132}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF Props Brick T1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947911505737750455, guid: ebdc6ef285e0bf542bed7e9c1bfb9923,
+        type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947911505844789836, guid: ebdc6ef285e0bf542bed7e9c1bfb9923,
+        type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

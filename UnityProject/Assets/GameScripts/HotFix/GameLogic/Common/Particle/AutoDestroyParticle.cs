@@ -10,7 +10,7 @@ namespace GameLogic.Common.Particle
 
         void Start()
         {
-            particleSystem = GetComponent<ParticleSystem>();
+            particleSystem = GetComponentInChildren<ParticleSystem>();
 
             // 如果没有ParticleSystem组件，打印错误信息
             if (particleSystem == null)

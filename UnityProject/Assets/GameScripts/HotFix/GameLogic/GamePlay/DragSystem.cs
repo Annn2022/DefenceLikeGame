@@ -55,7 +55,7 @@ namespace GameLogic.GamePlay
                     return;
                 }
                 Vector3 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                int num = Physics2D.RaycastNonAlloc(pos, Vector3.forward, hits, 1000);
+                int num = Physics2D.RaycastNonAlloc(pos, Vector3.forward, hits, 1000, LayerMask.GetMask("Dragable"));
                 if (num > 0)
                 {
                     var target = hits[0].transform.gameObject;
@@ -102,7 +102,7 @@ namespace GameLogic.GamePlay
                 switch (touch.phase)
                 {
                     case TouchPhase.Began:
-                        int num = Physics2D.RaycastNonAlloc(pos,Vector3.forward, hits);
+                        int num = Physics2D.RaycastNonAlloc(pos,Vector3.forward, hits, 1000, LayerMask.GetMask("Dragable"));
                         if (num > 0)
                         {
                             if (hits[0].transform.TryGetComponent<DragHandler_SceneObject>(out handler))

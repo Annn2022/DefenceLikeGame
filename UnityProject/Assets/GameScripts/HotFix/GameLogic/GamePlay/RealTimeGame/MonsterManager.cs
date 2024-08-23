@@ -203,7 +203,7 @@ namespace GameLogic.GamePlay
             for (int i = 0; i < monsterSpawnPoint.Count; i++)
             {
                 //有概率出现高等级怪物
-                uint isMore = (uint)(Random.Range(0f,1f) < spawnMoreHpPercent?2:0);
+                uint isMore = (uint)(Random.Range(0f,1f) < spawnMoreHpPercent?1:0);
                 GameObject monster = ManagerLocator.Get<FactoryManager>().Get<MonsterFactory>().CreateNewMonster((uint)UnityEngine.Random.Range((int)monsterlevel.x, (int)monsterlevel.y+1)+isMore+(uint)GameManager.Instance.technologyLevel);
                 monster.transform.position = monsterSpawnPoint[i].position;
                 monster.transform.SetParent(monsterParent,false);

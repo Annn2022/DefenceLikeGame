@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 6599950628588742427}
   - component: {fileID: 4617221532668294774}
   - component: {fileID: 3596887457714967052}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6191514143890666203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5999236623468052858}
   - component: {fileID: 6347279023822401325}
   - component: {fileID: 5632246215888765625}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 8394387303293421121}
   - component: {fileID: 5423354356521383648}
   - component: {fileID: 1567040401965507854}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Animal_Cow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,8 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  animalType: 0
   m_PlacementGrid: {fileID: 0}
-  Bulletpath: 
+  Bulletpath: bullet_Explore
+  bulletInterval: 3
+  Damage: 10
   m_Text: {fileID: 5632246215888765625}
 --- !u!61 &1567040401965507854
 BoxCollider2D:

@@ -7,7 +7,7 @@ namespace GameLogic.GamePlay.Factory
     public class BulletFactory:IFactory
     {
         private string[] bulletPathPool = new string[] { "AnimalBullet_01"};
-        
+
         public GameObject CreateBullet(uint id)
         {
             GameObject go;
@@ -37,6 +37,18 @@ namespace GameLogic.GamePlay.Factory
             
             return go;
         }
+        
+        
+        public GameObject CreateBulletAsName(string name, uint Level)
+        {
+            GameObject go;
+
+            go = GameModule.Resource.LoadGameObject(name);
+            go.GetComponentInChildren<Bullet>().Damage = (int)Mathf.Pow(2f,(float)Level);
+            
+            return go;
+        }
+        
 
         public void Init()
         {

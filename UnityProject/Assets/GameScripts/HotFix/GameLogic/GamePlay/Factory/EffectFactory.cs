@@ -25,6 +25,7 @@ namespace GameLogic.GamePlay.Factory
         //合成特效
         public static string Synthesize = "PAR_VM2SSBurstChunksA_0000";
         public static string Hit = "PAR_VM2SSBurstCircleA_0000";
+        public static string Explore = "Effect_Explore01";
 
     }
 }

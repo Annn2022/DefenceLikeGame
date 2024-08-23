@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameLogic.GamePlay.Factory;
 using GamePlay.framework;
@@ -11,8 +12,7 @@ namespace GameLogic.GamePlay
     {
         public EnemyGrid m_EnemyGrid;
 
-        public int      hp;
-        
+        public int hp;
         public int HP
         {
             get => hp;
@@ -51,7 +51,6 @@ namespace GameLogic.GamePlay
         public void BulletAttack(Bullet bullet)
         {
             TakeDamage(bullet.Damage);
-            ManagerLocator.Get<FactoryManager>().Get<EffectFactory>().CreateEffect(EffectType.Hit, transform.position).Forget();
         }
         
         private void Move()
@@ -73,7 +72,11 @@ namespace GameLogic.GamePlay
         public void ClearSelf()
         {
             Destroy(this.gameObject);
+        }
 
+        private void OnDestroy()
+        {
+            source_Slow.Cancel();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -81,8 +84,32 @@ namespace GameLogic.GamePlay
             if (col.TryGetComponent(out Bullet bullet))
             {
                 BulletAttack(bullet);
-                bullet.AttackMonster(this);
+                bullet.AttackMonster(this,col.ClosestPoint((Vector2)transform.position));
             }
+        }
+
+        
+
+
+        private CancellationTokenSource source_Slow = new CancellationTokenSource();
+        /// <summary>
+        /// 添加限时的减速
+        /// </summary>
+        /// <param name="speedRate"></param>
+        /// <param name="duration"></param>
+        public void AddSlowDown(float speedRate, float duration)
+        {
+            source_Slow.Cancel();
+            UniTask.Create(async () =>
+            {
+                var spd = speed;
+                speed *= speedRate;
+                GetComponent<SpriteRenderer>().color = Color.cyan;
+                await UniTask.Delay(TimeSpan.FromSeconds(duration)).AttachExternalCancellation(source_Slow.Token);
+                GetComponent<SpriteRenderer>().color = Color.white;
+                speed = spd;
+
+            }).AttachExternalCancellation(source_Slow.Token);
         }
     }
 }

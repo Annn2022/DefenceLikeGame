@@ -11,12 +11,12 @@ namespace GameLogic.GamePlay
         {
             if (col.TryGetComponent(out Bullet bullet) && ClearBullet)
             {
-             
                 bullet.ClearSelf();
             }
             else if (col.TryGetComponent(out Monster monster) && ClearMonster)
             {
                 monster.ClearSelf();
+                GameManager.Instance.Hp--;
             }
             
         }

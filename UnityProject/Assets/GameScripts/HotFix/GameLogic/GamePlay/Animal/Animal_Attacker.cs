@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GameLogic.GamePlay.Factory;
+using GameLogic.GamePlay.UI;
 using GamePlay.framework;
 using TMPro;
 using UnityEngine;
@@ -21,28 +22,35 @@ namespace GameLogic.GamePlay
             set
             {
                 id = value;
-                m_Text.text = Damage.ToString();
+                if (m_Text!= null)
+                {
+                    m_Text.text = Damage.ToString();
+
+                }
             }
         }
+        
+        public int animalType;
+
 
         public PlaceGrid m_PlacementGrid;
         public string        Bulletpath;
 
-        private float bulletInterval = 3f;
+        public float bulletInterval = 2f;
         private float bulletTimer    = 0;
 
-        public float Damage
-        {
-            get { return Mathf.Pow(2f,(float)id); }
-        }
-        
-        [SerializeField]
+        /// <summary>
+        /// 发射子弹的伤害
+        /// </summary>
+        public float Damage;
+
+            [SerializeField]
         private TMP_Text m_Text;
         
 
         public bool CheckSynthesize(Animal_Attacker attacker)
         {
-            if (ID == attacker.ID)
+            if (ID == attacker.ID && attacker.animalType == animalType)
             {
                 return true;
             }
@@ -51,7 +59,7 @@ namespace GameLogic.GamePlay
         }
 
 
-        private void Update()
+        protected  virtual void Update()
         {
             if (GameManager.Instance.IsGameOver)
             {
@@ -70,11 +78,21 @@ namespace GameLogic.GamePlay
                 SpawnBullet();
                 bulletTimer= 0;
             }
+        }                                
+
+        
+
+        protected override void OnBeginDrag(Vector3 position, PointerData pointerData)
+        {
+            base.OnBeginDrag(position, pointerData);
+            MainUIWindow.Instance.SetClearButton(true);
         }
 
         protected override void OnEndDrag(Vector3 position, PointerData pointerData)
         {
             base.OnEndDrag(position, pointerData);
+            MainUIWindow.Instance.SetClearButton(false);
+
             if (pointerData.target == null)
             {
                 return;
@@ -93,13 +111,24 @@ namespace GameLogic.GamePlay
 
 
             }
+
+            else if (pointerData.target.transform.TryGetComponent<BulletClear>(out var bulletClear))
+            {
+                ManagerLocator.Get<PlaceGridManager>().RemoveAttacker(this);
+
+            }
         }
 
 
-        public void SpawnBullet()
+        protected virtual void SpawnBullet()
         {
-            var go =  ManagerLocator.Get<FactoryManager>().Get<BulletFactory>().CreateBullet(ID);
+            //var go =  ManagerLocator.Get<FactoryManager>().Get<BulletFactory>().CreateBullet(ID);
+            var go =  ManagerLocator.Get<FactoryManager>().Get<BulletFactory>().CreateBulletAsName(Bulletpath,ID);
+            go.GetComponentInChildren<Bullet>().Damage =(int)Damage;
+            go.GetComponentInChildren<Bullet>().Level =(int)ID;
             go.transform.position = transform.position;
+
+            go.GetComponentInChildren<Bullet>().Init();
         }
     }
 }

@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 8856544066581277893}
   - component: {fileID: 6441192950337733935}
   - component: {fileID: 4209346021125801963}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &475608425812125034
 RectTransform:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 6174622044258334794}
   - component: {fileID: 2125947472874594646}
   - component: {fileID: 3126734878479473600}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,8 +248,8 @@ GameObject:
   - component: {fileID: 6750541273786475399}
   - component: {fileID: 4211777150324782620}
   - component: {fileID: 3704958766917606813}
-  - component: {fileID: 1747259821376115859}
-  m_Layer: 0
+  - component: {fileID: 4167853766708054286}
+  m_Layer: 31
   m_Name: Animal_Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19546312, y: 0.1722423}
   m_EdgeRadius: 0
---- !u!114 &1747259821376115859
+--- !u!114 &4167853766708054286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,10 +399,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5166151184047550591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c4feea8bf44b6c89f95301bd25b6e7, type: 3}
+  m_Script: {fileID: 11500000, guid: bec508b32ebd4e5bb8ff32a4822dd8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  animalType: 1
   m_PlacementGrid: {fileID: 0}
-  Bulletpath: 
+  Bulletpath: bullet_normal
+  bulletInterval: 2
+  Damage: 10
   m_Text: {fileID: 3126734878479473600}

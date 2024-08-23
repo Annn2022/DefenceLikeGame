@@ -10,7 +10,7 @@ namespace GameLogic.GamePlay
     public class AnimalManager:ManagerBehaviour<AnimalManager>
     {
         //动物生成质量升级的回合数
-        private int[] SpawnLevelUpTurn = new int[] { 0,10,20,30,40,50,60 };
+        private int[] SpawnLevelUpTurn = new int[] { 0,10,20,30,40 };
         
         private Vector2[] SpawnLevels = new Vector2[]
         {
@@ -19,8 +19,6 @@ namespace GameLogic.GamePlay
             new Vector2(1,3),
             new Vector2(1,4),
             new Vector2(1,5),
-            new Vector2(1,6),
-            new Vector2(1,7),
         };
         Vector2 spawnLevel;
         
