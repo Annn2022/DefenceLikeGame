@@ -18,14 +18,7 @@ namespace GameLogic.GamePlay
                 monster.TakeDamage(damage);
             }
         }
-
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            if (other.TryGetComponent(out Monster monster))
-            {
-                monster.TakeDamage(damage);
-            }
-        }
+        
     }
    
 }

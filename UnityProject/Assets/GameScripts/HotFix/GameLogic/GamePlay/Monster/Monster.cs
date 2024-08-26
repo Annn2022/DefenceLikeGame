@@ -22,7 +22,7 @@ namespace GameLogic.GamePlay
                 m_Txt.text = hp.ToString();
                 if (CoinCount == 0)
                 {
-                    CoinCount = hp;
+                    CoinCount = hp/8;
                 }
             }
         }

@@ -17,8 +17,8 @@ namespace GameLogic.GamePlay
             new Vector2(1,1),
             new Vector2(1,2),
             new Vector2(1,3),
-            new Vector2(1,4),
-            new Vector2(1,5),
+            new Vector2(2,3),
+            new Vector2(3,4),
         };
         Vector2 spawnLevel;
         

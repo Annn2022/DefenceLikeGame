@@ -22,7 +22,7 @@ namespace GameLogic.GamePlay.Factory
             }
             
             go.name = $"Monster_{id}";
-            go.GetComponent<Monster>().HP = (int)Mathf.Pow(2f, id+1);
+            go.GetComponent<Monster>().HP = (int)id*20;
             
             return go;
         }  
@@ -41,7 +41,7 @@ namespace GameLogic.GamePlay.Factory
             }
             
             go.name = $"Monster_Big_{id}";
-            go.GetComponent<Monster>().HP = (int)Mathf.Pow(2f, id+1);
+            go.GetComponent<Monster>().HP = (int)id*40;
             
             return go;
         }

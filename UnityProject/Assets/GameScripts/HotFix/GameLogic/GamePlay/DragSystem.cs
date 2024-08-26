@@ -91,7 +91,7 @@ namespace GameLogic.GamePlay
             }
 #endif
 
-#if PLATFORM_WEBGL
+#if PLATFORM_WEBGL || PLATFORM_IOS|| PLATFORM_ANDROID
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -137,11 +137,12 @@ namespace GameLogic.GamePlay
 
                         break;
                 }
-#endif
+
             }
-            
+#endif
         }
         
+    
         // 获取鼠标在世界空间中的位置
         private Vector3 GetMouseWorldPos()
         {

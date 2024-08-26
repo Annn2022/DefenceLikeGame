@@ -139,14 +139,14 @@ namespace GameLogic.GamePlay
             }
             
             //怪物生成间隔计算
-            spawnInterval = 4;
-            for (int i = MonsterspawnIntervalChange.Length-1; i >=0; i--)
-            {
-                if (curTurn >=  MonsterLevelsUpTurn[i])
-                {
-                    spawnInterval--;
-                }
-            }
+            // spawnInterval = 4;
+            // for (int i = MonsterspawnIntervalChange.Length-1; i >=0; i--)
+            // {
+            //     if (curTurn >=  MonsterLevelsUpTurn[i])
+            //     {
+            //         spawnInterval--;
+            //     }
+            // }
             
             //是否为打怪生成回合
             if (isNewTurn)

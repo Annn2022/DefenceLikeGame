@@ -46,6 +46,7 @@ namespace GameLogic.GamePlay.Factory
             go = GameModule.Resource.LoadGameObject(name);
             go.GetComponentInChildren<Bullet>().Damage = (int)Mathf.Pow(2f,(float)Level);
             
+            
             return go;
         }
         
